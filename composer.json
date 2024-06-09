@@ -14,5 +14,7 @@
             "email": "adrien.cadalen@etudiant.univ-reims.fr"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pdo": "*"
+    }
 }
