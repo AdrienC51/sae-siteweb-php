@@ -1,0 +1,18 @@
+{
+    "name": "cada0003/sae2-01",
+    "description": "Développement d'une application Web de consultation et modification d'une base de données MySQL",
+    "type": "project",
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrien Cadalen",
+            "email": "adrien.cadalen@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}
