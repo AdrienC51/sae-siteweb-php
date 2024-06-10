@@ -1,13 +1,26 @@
 <?php
+
 declare(strict_types=1);
 
-use html\WebPage ;
-use Entity\Episode;
+use Html\AppWebPage ;
 use Entity\Poster ;
-use Entity\Show ;
+use Entity\Collection\ShowCollection ;
 
-echo "Hello bienvenue sur notre site";
-
-$Page = New WebPage();
-$Page->setTitle("Séries TV");
-$Page->appendContent("<div> class='menu' <a href ='src/Entity/Episode.php?name={$name->getName()}'>Titre Serie</a></div>");
+$page = new AppWebPage('Séries TV');
+$shows = new ShowCollection();
+$allShows = $shows->findAll();
+$page->appendContent("<div class='main'>");
+foreach ($allShows as $show) {
+    $posters = new Poster();
+    $page->appendContent(
+        <<<HTML
+        <a href='/show.php?name={$page->escapeString($show->getName())}'>
+            <img src='poster.php?posterId={}'  alt='poster'/>
+            <p>{$show->getName()} <br /><br />{$show->getOverview()} </p>          
+        </a>
+        HTML
+    );
+    $page->appendContent("<a href ='/show.php?name={$page->escapeString($show->getName())}'></a>");
+}
+$page->appendContent("</div>");
+echo $page->toHTML();
