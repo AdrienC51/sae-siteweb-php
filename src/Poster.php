@@ -26,7 +26,7 @@ class Poster
             WHERE id = posterId
             SQL
         );
-        $req->execute(['coverId' => $id]);
+        $req->execute(['PosterId' => $id]);
         $req->setFetchMode(PDO::FETCH_CLASS, 'src\Poster');
         if (($ligne = $req->fetch()) === false) {
             throw new Exception\EntityNotFoundException();
