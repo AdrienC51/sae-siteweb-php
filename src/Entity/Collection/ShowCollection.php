@@ -14,7 +14,7 @@ class ShowCollection
     {
         $allShow = MyPDO::getInstance()->prepare(
             <<<SQL
-                SELECT id, name, originalName, overview
+                SELECT id, name, originalName, overview, posterId
                 FROM tvshow
                 ORDER BY name
             SQL
