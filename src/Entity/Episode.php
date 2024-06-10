@@ -1,5 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
+namespace Entity;
+
+use Database\MyPdo;
+use PDO;
+
 class Episode
 {
     private int $id ;
