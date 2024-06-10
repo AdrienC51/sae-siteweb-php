@@ -14,22 +14,28 @@ class Episode
     private string $name;
     private string $overview ;
     private string $episodeNumber ;
-    public function getId() {
+    public function getId()
+    {
         return $this->id ;
     }
-    public function getSeasonId(){
+    public function getSeasonId()
+    {
         return $this->seasonId ;
     }
-    public function getName() {
+    public function getName()
+    {
         return $this->name ;
     }
-    public function getOverview() {
+    public function getOverview()
+    {
         return $this->overview ;
     }
-    public function getEpisodeNumber() {
+    public function getEpisodeNumber()
+    {
         return $this->episodeNumber ;
     }
-    public static function findById(int $id): Episode {
+    public static function findById(int $id): Episode
+    {
         $req = MyPdo::getInstance()->prepare(
             <<<SQL
             SELECT id,episodeNumber, seasonId,name,overview
