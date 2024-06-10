@@ -10,7 +10,7 @@ use PDO;
 
 class ShowCollection
 {
-    public function findAll():array
+    public function findAll(): array
     {
         $allShow = MyPDO::getInstance()->prepare(
             <<<SQL

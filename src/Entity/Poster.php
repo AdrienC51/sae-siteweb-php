@@ -9,7 +9,6 @@ use PDO;
 
 class Poster
 {
-
     private int $id ;
     private string $jpeg;
     public function getId(): int
