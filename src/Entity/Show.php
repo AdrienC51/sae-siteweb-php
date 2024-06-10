@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Collection\SeasonCollection;
 use PDO;
 
 class Show
@@ -17,10 +18,9 @@ class Show
 
     public function getPosterId(): ?int
     {
-        if (isset ($this->posterId)){
+        if (isset($this->posterId)) {
             return $this->posterId;
-        }
-        else {
+        } else {
             return  null ;
         }
 
@@ -91,5 +91,11 @@ class Show
             http_response_code(404);
         }
         return $show;
+    }
+
+    public function getSeasons(): array
+    {
+        $listSeasons = new SeasonCollection();
+        return $listSeasons->findByTvShowId($this->getId());
     }
 }
