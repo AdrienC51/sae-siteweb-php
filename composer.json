@@ -16,5 +16,16 @@
     ],
     "require": {
       "ext-pdo": "*"
+    },
+    "scripts": {
+        "start:linux": [
+            "Composer\\Config::disableProcessTimeout",
+            "bin/run-server.sh"
+        ],
+        "test:cs": "php vendor/bin/php-cs-fixer fix --dry-run",
+        "fix:cs": "php vendor/bin/php-cs-fixer fix"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.58"
     }
 }
