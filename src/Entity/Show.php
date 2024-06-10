@@ -13,6 +13,23 @@ class Show
     private string $name;
     private string $originalName;
     private string $overview;
+    private int $posterId;
+
+    public function getPosterId(): ?int
+    {
+        if (isset ($this->posterId)){
+            return $this->posterId;
+        }
+        else {
+            return  null ;
+        }
+
+    }
+
+    public function setPosterId(int $posterId): void
+    {
+        $this->posterId = $posterId;
+    }
 
     public function getId(): int
     {
@@ -62,7 +79,7 @@ class Show
     {
         $showRqst = MyPDO::getInstance()->prepare(
             <<<SQL
-                SELECT id, name, originalName, overview
+                SELECT id, name, originalName, overview,posterId
                 FROM  tvshow
                 WHERE id = $id
             SQL

@@ -19,17 +19,17 @@ class Poster
     {
         return $this->jpeg;
     }
-    public static function findById(int $id): Poster
+    public function findById(int $posterId): Poster
     {
         $req = MyPdo::getInstance()->prepare(
             <<<SQL
             SELECT id,jpeg
             FROM poster
-            WHERE id = posterId
+            WHERE id = {$posterId}
             SQL
         );
-        $req->execute(['PosterId' => $id]);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'src\Poster');
+        $req->execute();
+        $req->setFetchMode(PDO::FETCH_CLASS, 'Entity\Poster');
         if (($ligne = $req->fetch()) === false) {
             throw new Exception\EntityNotFoundException();
         }

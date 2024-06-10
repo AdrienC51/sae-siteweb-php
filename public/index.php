@@ -7,6 +7,7 @@ use Entity\Poster ;
 use Entity\Collection\ShowCollection ;
 
 $page = new AppWebPage('Séries TV');
+$page->appendCssUrl('css/index.css');
 $shows = new ShowCollection();
 $allShows = $shows->findAll();
 $page->appendContent("<div class='main'>");
@@ -14,13 +15,12 @@ foreach ($allShows as $show) {
     $posters = new Poster();
     $page->appendContent(
         <<<HTML
-        <a href='/show.php?name={$page->escapeString($show->getName())}'>
-            <img src='poster.php?posterId={}'  alt='poster'/>
+        <a href='/show.php?showId={$show->getId()}'>
+            <img src='poster.php?posterId={$show->getPosterId()}'  alt='poster'/>
             <p>{$show->getName()} <br /><br />{$show->getOverview()} </p>          
         </a>
         HTML
     );
-    $page->appendContent("<a href ='/show.php?name={$page->escapeString($show->getName())}'></a>");
 }
 $page->appendContent("</div>");
 echo $page->toHTML();
