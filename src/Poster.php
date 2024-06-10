@@ -23,7 +23,7 @@ class Poster
             <<<SQL
             SELECT id,jpeg
             FROM poster
-            WHERE id =:posterId
+            WHERE id = posterId
             SQL
         );
         $req->execute(['coverId' => $id]);
