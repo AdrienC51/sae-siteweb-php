@@ -7,9 +7,9 @@ namespace Entity;
 class Show
 {
     private int $id;
-    private string $title;
-    private string $ogTitle;
-    private string $description;
+    private string $name;
+    private string $originalName;
+    private string $overview;
 
     public function getId(): int
     {
@@ -22,36 +22,36 @@ class Show
         return $this;
     }
 
-    public function getTitle(): string
+    public function getName(): string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): Show
+    public function setName(string $name): Show
     {
-        $this->title = $title;
+        $this->name = $name;
         return $this;
     }
 
-    public function getOgTitle(): string
+    public function getOriginalName(): string
     {
-        return $this->ogTitle;
+        return $this->originalName;
     }
 
-    public function setOgTitle(string $ogTitle): Show
+    public function setOriginalName(string $originalName): Show
     {
-        $this->ogTitle = $ogTitle;
+        $this->originalName = $originalName;
         return $this;
     }
 
-    public function getDescription(): string
+    public function getOverview(): string
     {
-        return $this->description;
+        return $this->overview;
     }
 
-    public function setDescription(string $description): Show
+    public function setOverview(string $overview): Show
     {
-        $this->description = $description;
+        $this->overview = $overview;
         return $this;
     }
 
@@ -72,5 +72,4 @@ class Show
         }
         return $show;
     }
-
 }
