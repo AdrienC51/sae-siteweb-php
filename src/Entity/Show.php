@@ -10,23 +10,18 @@ use PDO;
 
 class Show
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $originalName;
     private string $overview;
-    private int $posterId;
+    private ?int $posterId;
 
     public function getPosterId(): ?int
     {
-        if (isset($this->posterId)) {
-            return $this->posterId;
-        } else {
-            return  null ;
-        }
-
+        return $this->posterId;
     }
 
-    public function setPosterId(int $posterId): void
+    public function setPosterId(?int $posterId): void
     {
         $this->posterId = $posterId;
     }
@@ -36,10 +31,9 @@ class Show
         return $this->id;
     }
 
-    public function setId(int $id): Show
+    public function setId(?int $id): Show
     {
         $this->id = $id;
-        return $this;
     }
 
     public function getName(): string
@@ -50,7 +44,6 @@ class Show
     public function setName(string $name): Show
     {
         $this->name = $name;
-        return $this;
     }
 
     public function getOriginalName(): string
@@ -61,7 +54,6 @@ class Show
     public function setOriginalName(string $originalName): Show
     {
         $this->originalName = $originalName;
-        return $this;
     }
 
     public function getOverview(): string
@@ -72,7 +64,6 @@ class Show
     public function setOverview(string $overview): Show
     {
         $this->overview = $overview;
-        return $this;
     }
 
     public function findById(int $id): Show
