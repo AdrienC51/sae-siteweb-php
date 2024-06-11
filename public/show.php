@@ -19,16 +19,19 @@ if (!$show->getId()) {
 }
 
 $webPage = new AppWebPage("Séries TV : {$show->getName()}");
+$webPage->appendCssUrl('css/show.css');
 
 
 $webPage->appendContent(
     <<<HTML
-    <div class='content'>
         <div class='head_content'>
              <img src='poster.php?posterId={$show->getPosterId()}'  alt='poster'/>
-             <p>{$show->getName()}<br />{$show->getOriginalName()}</p>
-             <p>{$show->getOverview()}</p>
+             <div class="head_content_text">
+                <p>{$show->getName()}<br />{$show->getOriginalName()}</p>
+                <p>{$show->getOverview()}</p>
+            </div>
         </div>
+        <div class="main_content">
     HTML
 );
 $listSeasons = $show->getSeasons();
