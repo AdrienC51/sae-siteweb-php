@@ -6,10 +6,17 @@ use Html\AppWebPage ;
 use Entity\Poster ;
 use Entity\Collection\ShowCollection ;
 
+
 $page = new AppWebPage('Séries TV');
 $page->appendCssUrl('css/index.css');
 $shows = new ShowCollection();
-$allShows = $shows->findAll();
+
+if (isset($_GET['genreId']) && ctype_digit($_GET['genreId'])) {
+    $allShows = $shows->findAll((int)$_GET['genreId']);
+} else {
+    $allShows = $shows->findAll();
+}
+
 $page->appendContent("<div class='main'>");
 foreach ($allShows as $show) {
     $posters = new Poster();
