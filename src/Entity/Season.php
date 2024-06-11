@@ -41,7 +41,7 @@ class Season
         return $this->posterId;
     }
 
-    public function findById(int $id): Show
+    public function findById(int $id): Season
     {
         $seasonRqst = MyPDO::getInstance()->prepare(
             <<<SQL
