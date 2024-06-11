@@ -1,0 +1,95 @@
+html,body {
+    height: 95vh;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    border-color: black;
+    background-color: yellow;
+    align-items: center;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    border-color: black;
+    background-color: yellow;
+
+}
+.content {
+    display:flex;
+    flex-direction: column;
+    flex:1 ;
+    height : 90% ;
+    overflow: auto;
+    margin: 5px ;
+
+}
+.main {
+    display:flex ;
+    flex-direction: column;
+    gap: 5px;
+    flex : 1 ;
+
+}
+a {
+    display : flex;
+    flex-direction: row;
+    border-color: black;
+    background-color: lightblue;
+    gap : 1px;
+    flex: 1;
+}
+main > a:nth-child(2n){
+    display : flex;
+    flex-direction: row-reverse;
+    border-color: black;
+    background-color: lightblue;
+    gap : 1px;
+    flex: 1;
+    justify-content: space-between;
+
+}
+.main_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.head_content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.head_content a:first-child{
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+}
+.main_content {
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+}
+a > p {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+p {
+    gap: 2px;
+}
+.head_content_text > a {
+    gap : 1px;
+}
+.content_list {
+    display : flex;
+    flex-direction: column;
+    background-color: lightblue;
+}
+.head_content_text {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
