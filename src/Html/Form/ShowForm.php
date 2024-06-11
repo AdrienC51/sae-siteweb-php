@@ -7,6 +7,7 @@ namespace Html\Form;
 use Entity\Show;
 use Html\StringEscaper;
 use Entity\Exception\ParameterException;
+use Html\WebPage;
 
 class ShowForm extends Show
 {
@@ -25,7 +26,8 @@ class ShowForm extends Show
 
     public function getHtmlForm(string $action): string
     {
-        return <<<HTML
+        $pageForm = new WebPage("Formulaire de création d'une série");
+        $form = <<<HTML
                     <!DOCTYPE html>
                     <form method="post" action="{$action}">
                         <input name="id" type="hidden" value="{$this?->show?->getId()}">
@@ -49,6 +51,8 @@ class ShowForm extends Show
                         <button type="submit">Enregistrer</button>
                     </form>
                     HTML;
+        $pageForm->appendContent($form);
+        return $pageForm->toHTML();
     }
 
     /**
