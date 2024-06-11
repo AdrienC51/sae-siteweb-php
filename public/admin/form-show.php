@@ -18,6 +18,8 @@ try {
             throw new ParameterException();
         }
     }
+    $showForm = new showForm($show);
+    print($showForm->getHtmlForm('save-show.php'));
 } catch (ParameterException) {
     http_response_code(400);
 } catch (EntityNotFoundException) {
@@ -25,5 +27,4 @@ try {
 } catch (Exception) {
     http_response_code(500);
 }
-$showForm = new showForm($show);
-print($showForm->getHtmlForm('save-show.php'));
+
