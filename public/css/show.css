@@ -41,14 +41,27 @@ a {
     flex : 1 ;
 
 }
-.head_content p {
+.head_content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.head_content_text {
     display: flex;
     flex-direction: column;
-
+}
+.head_content p:first-child{
+    text-align: right;
 }
 .main_content {
     display:flex;
     flex-direction: column;
     gap: 5px;
+}
+
+a > p {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
 }
 
