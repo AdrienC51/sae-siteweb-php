@@ -59,7 +59,10 @@ class ShowForm extends Show
      */
     public function setEntityFromQueryString(): void
     {
-        if (!isset($_POST['name']) || $_POST['name'] == "") {
+        if ((!isset($_POST['name']) || $_POST['name'] == "") ||
+            (!isset($_POST['originalName']) || $_POST['originalName'] == "") ||
+            (!isset($_POST['homepage']) || $_POST['homepage'] == "") ||
+            (!isset($_POST['overview']) || $_POST['overview'] == "")) {
             throw new ParameterException();
         } elseif(isset($_POST['id']) && ctype_digit($_POST['id'])) {
             $this->show = $this->create(
