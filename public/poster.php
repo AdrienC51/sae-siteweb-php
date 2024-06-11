@@ -15,6 +15,8 @@ try {
     echo $serie->getJpeg();
 } catch (ParameterException) {
     http_response_code(400);
+    header('Location : http://cutrona/but/s2/sae2-01/ressources/public/img/default.png');
+    die();
 } catch (EntityNotFoundException) {
     http_response_code(404);
 } catch (Exception) {
