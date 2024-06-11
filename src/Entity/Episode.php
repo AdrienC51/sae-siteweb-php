@@ -38,14 +38,14 @@ class Episode
     {
         $req = MyPdo::getInstance()->prepare(
             <<<SQL
-            SELECT id,episodeNumber, seasonId,name,overview
+            SELECT *
             FROM episode
+            WHERE id = {$id}
             ORDER BY episodeNumber,seasonId,name
-            
             SQL
         );
-        $req->execute(['EpisodeId' => $id]);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'src\Episode');
+        $req->execute();
+        $req->setFetchMode(PDO::FETCH_CLASS, 'Entity\Episode');
         if (($ligne = $req->fetch()) === false) {
             throw new Exception\EntityNotFoundException();
         }
