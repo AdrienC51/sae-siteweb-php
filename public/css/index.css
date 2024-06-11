@@ -17,6 +17,23 @@ html,body {
     background-color: yellow;
 
 }
+.head_content {
+    display: flex;
+    flex-direction: row;
+
+}
+.head_content_text {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+
+}
+.content_list {
+    display : flex;
+    flex-direction: column;
+    background-color: lightblue;
+}
 .content {
     display:flex;
     flex-direction: column;
@@ -25,6 +42,11 @@ html,body {
     overflow: auto;
     margin: 5px ;
 
+}
+.main_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
  a {
     display : flex;
