@@ -126,4 +126,23 @@ class Show
         return $this;
     }
 
+    protected function update(): Show
+    {
+        $showUpdate = MyPDO::getInstance()->prepare(
+            <<<SQL
+                UPDATE tvshow
+                SET name='{$this->getName()}',
+                    originalName='{$this->getOriginalName()}',
+                    homepage='{$this->getHomepage()}',
+                    overview='{$this->getOverview()}',
+                    posterId='{$this->getPosterId()}'
+                WHERE id={$this->getId()}
+            SQL
+        );
+        $showUpdate->execute();
+        return $this;
+    }
+
+
+
 }
