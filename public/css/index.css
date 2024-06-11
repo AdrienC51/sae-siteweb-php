@@ -54,7 +54,7 @@ html,body {
     border-color: black;
     background-color: lightblue;
     gap : 1px;
-    flex: 1;
+
 }
 .main {
     display:flex ;
