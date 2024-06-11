@@ -82,7 +82,7 @@ class Show
     {
         $showRqst = MyPDO::getInstance()->prepare(
             <<<SQL
-                SELECT id, name, originalName, overview,posterId
+                SELECT *
                 FROM  tvshow
                 WHERE id = $id
             SQL
@@ -131,10 +131,10 @@ class Show
         $showUpdate = MyPDO::getInstance()->prepare(
             <<<SQL
                 UPDATE tvshow
-                SET name='{$this->getName()}',
-                    originalName='{$this->getOriginalName()}',
-                    homepage='{$this->getHomepage()}',
-                    overview='{$this->getOverview()}',
+                SET name='{$this->stripTagsAndTrim($this->escapeString($this->getName()))}',
+                    originalName='{$this->stripTagsAndTrim($this->escapeString($this->getOriginalName()))}',
+                    homepage='{$this->stripTagsAndTrim($this->escapeString($this->getHomepage()))}',
+                    overview='{$this->stripTagsAndTrim($this->escapeString($this->getOverview()))}',
                     posterId='{$this->getPosterId()}'
                 WHERE id={$this->getId()}
             SQL
@@ -147,8 +147,11 @@ class Show
     {
         $showInsert = MyPDO::getInstance()->prepare(
             <<<SQL
-                INSERT INTO Show(name, originalName, homepage, overview)
-                VALUES ('{$this->getName()}','{$this->getOriginalName()}','{$this->getHomepage()}','{$this->getOverview()}')
+                INSERT INTO tvshow(name, originalName, homepage, overview)
+                VALUES ('{$this->stripTagsAndTrim($this->escapeString($this->getName()))}',
+                        '{$this->stripTagsAndTrim($this->escapeString($this->getOriginalName()))}',
+                        '{$this->stripTagsAndTrim($this->escapeString($this->getHomepage()))}',
+                        '{$this->stripTagsAndTrim($this->escapeString($this->getOverview()))}')
             SQL
         );
         $showInsert->execute();
