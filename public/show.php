@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 use Html\AppWebPage;
 use Entity\Poster;
+use Entity\Show;
 
 if (isset($_GET['showId']) && ctype_digit($_GET['showId'])) {
-    $artistId  = htmlspecialchars($_GET['showId']);
+    $showId  = htmlspecialchars($_GET['showId']);
 } else {
     header("Location: http://localhost:8000/index.php");
     exit;
 }
 
-$show = (new Entity\Show())->findById((int)$_GET['showId']);
+$show = (new Show())->findById((int)$showId);
 if (!$show->getId()) {
     http_response_code(404);
     exit;
