@@ -13,8 +13,20 @@ class Show
     private ?int $id;
     private string $name;
     private string $originalName;
+    private string $homepage;
     private string $overview;
-    private ?int $posterId;
+    private ?int $posterId=null;
+
+    public function getHomepage(): string
+    {
+        return $this->homepage;
+    }
+
+    public function setHomepage(string $homepage): void
+    {
+        $this->homepage = $homepage;
+    }
+
 
     public function getPosterId(): ?int
     {
@@ -31,7 +43,7 @@ class Show
         return $this->id;
     }
 
-    public function setId(?int $id): Show
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -41,7 +53,7 @@ class Show
         return $this->name;
     }
 
-    public function setName(string $name): Show
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -51,7 +63,7 @@ class Show
         return $this->originalName;
     }
 
-    public function setOriginalName(string $originalName): Show
+    public function setOriginalName(string $originalName): void
     {
         $this->originalName = $originalName;
     }
@@ -61,7 +73,7 @@ class Show
         return $this->overview;
     }
 
-    public function setOverview(string $overview): Show
+    public function setOverview(string $overview): void
     {
         $this->overview = $overview;
     }
@@ -88,5 +100,16 @@ class Show
     {
         $listSeasons = new SeasonCollection();
         return $listSeasons->findByTvShowId($this->getId());
+    }
+
+    public function create(string $name,string $originalName,string $homepage, string $overview, ?int $id = null): Show
+    {
+        $show = new Show();
+        $show->setId($id);
+        $show->setName($name);
+        $show->setOriginalName($originalName);
+        $show->setHomepage($homepage);
+        $show->setOverview($overview);
+        return $show;
     }
 }
