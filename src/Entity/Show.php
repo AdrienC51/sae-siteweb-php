@@ -143,6 +143,21 @@ class Show
         return $this;
     }
 
+    protected function insert(): Show
+    {
+        $showInsert = MyPDO::getInstance()->prepare(
+            <<<SQL
+                INSERT INTO Show(name, originalName, homepage, overview)
+                VALUES ('{$this->getName()}','{$this->getOriginalName()}','{$this->getHomepage()}','{$this->getOverview()}')
+            SQL
+        );
+        $showInsert->execute();
+        $newId = MyPDO::getInstance()->lastInsertId();
+        print $newId;
+        $this->setId((int)$newId);
+        return $this;
+    }
+
 
 
 }
