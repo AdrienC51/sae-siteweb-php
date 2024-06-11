@@ -6,6 +6,7 @@ namespace Entity;
 
 use Database\MyPdo;
 use PDO;
+use Entity\Collection\EpisodeCollection;
 
 class Season
 {
@@ -56,5 +57,11 @@ class Season
             http_response_code(404);
         }
         return $season;
+    }
+
+    public function getEpisodes(): array
+    {
+        $listEpisodes = new EpisodeCollection();
+        return $listEpisodes->findBySeasonId($this->getId());
     }
 }
