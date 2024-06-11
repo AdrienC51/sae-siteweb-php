@@ -10,23 +10,30 @@ use PDO;
 
 class Show
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $originalName;
+    private string $homepage;
     private string $overview;
-    private int $posterId;
+    private ?int $posterId=null;
+
+    public function getHomepage(): string
+    {
+        return $this->homepage;
+    }
+
+    public function setHomepage(string $homepage): void
+    {
+        $this->homepage = $homepage;
+    }
+
 
     public function getPosterId(): ?int
     {
-        if (isset($this->posterId)) {
-            return $this->posterId;
-        } else {
-            return  null ;
-        }
-
+        return $this->posterId;
     }
 
-    public function setPosterId(int $posterId): void
+    public function setPosterId(?int $posterId): void
     {
         $this->posterId = $posterId;
     }
@@ -36,10 +43,9 @@ class Show
         return $this->id;
     }
 
-    public function setId(int $id): Show
+    public function setId(?int $id): void
     {
         $this->id = $id;
-        return $this;
     }
 
     public function getName(): string
@@ -47,10 +53,9 @@ class Show
         return $this->name;
     }
 
-    public function setName(string $name): Show
+    public function setName(string $name): void
     {
         $this->name = $name;
-        return $this;
     }
 
     public function getOriginalName(): string
@@ -58,10 +63,9 @@ class Show
         return $this->originalName;
     }
 
-    public function setOriginalName(string $originalName): Show
+    public function setOriginalName(string $originalName): void
     {
         $this->originalName = $originalName;
-        return $this;
     }
 
     public function getOverview(): string
@@ -69,10 +73,9 @@ class Show
         return $this->overview;
     }
 
-    public function setOverview(string $overview): Show
+    public function setOverview(string $overview): void
     {
         $this->overview = $overview;
-        return $this;
     }
 
     public function findById(int $id): Show
@@ -98,4 +101,71 @@ class Show
         $listSeasons = new SeasonCollection();
         return $listSeasons->findByTvShowId($this->getId());
     }
+
+    public function create(string $name,string $originalName,string $homepage, string $overview, ?int $id = null): Show
+    {
+        $show = new Show();
+        $show->setId($id);
+        $show->setName($name);
+        $show->setOriginalName($originalName);
+        $show->setHomepage($homepage);
+        $show->setOverview($overview);
+        return $show;
+    }
+
+    public function delete(): Show
+    {
+        $showDelete = MyPDO::getInstance()->prepare(
+            <<<SQL
+                DELETE FROM tvshow
+                WHERE id={$this->getId()}
+            SQL
+        );
+        $showDelete->execute();
+        $this->setId(null);
+        return $this;
+    }
+
+    protected function update(): Show
+    {
+        $showUpdate = MyPDO::getInstance()->prepare(
+            <<<SQL
+                UPDATE tvshow
+                SET name='{$this->getName()}',
+                    originalName='{$this->getOriginalName()}',
+                    homepage='{$this->getHomepage()}',
+                    overview='{$this->getOverview()}',
+                    posterId='{$this->getPosterId()}'
+                WHERE id={$this->getId()}
+            SQL
+        );
+        $showUpdate->execute();
+        return $this;
+    }
+
+    protected function insert(): Show
+    {
+        $showInsert = MyPDO::getInstance()->prepare(
+            <<<SQL
+                INSERT INTO Show(name, originalName, homepage, overview)
+                VALUES ('{$this->getName()}','{$this->getOriginalName()}','{$this->getHomepage()}','{$this->getOverview()}')
+            SQL
+        );
+        $showInsert->execute();
+        $newId = MyPDO::getInstance()->lastInsertId();
+        print $newId;
+        $this->setId((int)$newId);
+        return $this;
+    }
+
+    public function save(): Show
+    {
+        if (is_null($this->getId())) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
+
 }
