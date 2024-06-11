@@ -32,7 +32,7 @@ html,body {
     display:flex ;
     flex-direction: column;
     gap: 5px;
-    
+
 
 }
 a {
@@ -67,11 +67,6 @@ main > a:nth-child(2n){
     text-align: right;
     display: flex;
     flex-direction: row;
-}
-.main_content {
-    display:flex;
-    flex-direction: column;
-    gap: 5px;
 }
 a > p {
     display: flex;
