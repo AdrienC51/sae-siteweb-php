@@ -24,7 +24,6 @@ html,body {
     height : 90% ;
     overflow: auto;
     margin: 5px ;
-
 }
 a {
     display : flex;
@@ -64,4 +63,3 @@ a > p {
     align-items: center;
     margin-left: 5px;
 }
-
