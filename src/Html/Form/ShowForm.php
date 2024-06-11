@@ -6,6 +6,7 @@ namespace Html\Form;
 
 use Entity\Show;
 use Html\StringEscaper;
+use Entity\Exception\ParameterException;
 
 class ShowForm extends Show
 {
@@ -48,5 +49,30 @@ class ShowForm extends Show
                         <button type="submit">Enregistrer</button>
                     </form>
                     HTML;
+    }
+
+    /**
+     * @throws ParameterException
+     */
+    public function setEntityFromQueryString(): void
+    {
+        if (!isset($_POST['name']) || $_POST['name'] == "") {
+            throw new ParameterException();
+        } elseif(isset($_POST['id']) && ctype_digit($_POST['id'])) {
+            $this->show = $this->create(
+                $this->stripTagsAndTrim($this->escapeString($_POST['name'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['originalName'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['homepage'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['overview'])),
+                (int)$_POST['id']
+            );
+        } else {
+            $this->show = $this->create(
+                $this->stripTagsAndTrim($this->escapeString($_POST['name'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['originalName'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['homepage'])),
+                $this->stripTagsAndTrim($this->escapeString($_POST['overview']))
+            );
+        }
     }
 }
