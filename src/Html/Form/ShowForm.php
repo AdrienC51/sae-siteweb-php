@@ -28,7 +28,6 @@ class ShowForm extends Show
     {
         $pageForm = new WebPage("Formulaire de création d'une série");
         $form = <<<HTML
-                    <!DOCTYPE html>
                     <form method="post" action="{$action}">
                         <input name="id" type="hidden" value="{$this?->show?->getId()}">
                         <label>
