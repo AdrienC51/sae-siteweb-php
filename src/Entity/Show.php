@@ -112,4 +112,18 @@ class Show
         $show->setOverview($overview);
         return $show;
     }
+
+    public function delete(): Show
+    {
+        $showDelete = MyPDO::getInstance()->prepare(
+            <<<SQL
+                DELETE FROM tvshow
+                WHERE id={$this->getId()}
+            SQL
+        );
+        $showDelete->execute();
+        $this->setId(null);
+        return $this;
+    }
+
 }
