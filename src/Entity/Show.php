@@ -158,6 +158,14 @@ class Show
         return $this;
     }
 
-
+    public function save(): Show
+    {
+        if (is_null($this->getId())) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+        return $this;
+    }
 
 }
