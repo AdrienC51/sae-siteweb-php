@@ -8,8 +8,8 @@ use Entity\Show;
 
 try {
     if(isset($_GET['showId']) && ctype_digit($_GET['showId'])) {
-        $show = new Show();
-        $show->findById($_GET['showId']);
+        $showSearch = new Show();
+        $show = $showSearch->findById((int)$_GET['showId']);
     } else {
         throw new ParameterException();
     }

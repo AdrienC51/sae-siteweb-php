@@ -7,15 +7,17 @@ namespace Entity;
 use Database\MyPdo;
 use Entity\Collection\SeasonCollection;
 use PDO;
+use Html\StringEscaper;
 
 class Show
 {
+    use StringEscaper;
     private ?int $id;
     private string $name;
     private string $originalName;
     private string $homepage;
     private string $overview;
-    private ?int $posterId=null;
+    private ?int $posterId = null;
 
     public function getHomepage(): string
     {
@@ -82,7 +84,7 @@ class Show
     {
         $showRqst = MyPDO::getInstance()->prepare(
             <<<SQL
-                SELECT id, name, originalName, overview,posterId
+                SELECT *
                 FROM  tvshow
                 WHERE id = $id
             SQL
@@ -102,7 +104,7 @@ class Show
         return $listSeasons->findByTvShowId($this->getId());
     }
 
-    public function create(string $name,string $originalName,string $homepage, string $overview, ?int $id = null): Show
+    public function create(string $name, string $originalName, string $homepage, string $overview, ?int $id = null): Show
     {
         $show = new Show();
         $show->setId($id);
@@ -128,18 +130,19 @@ class Show
 
     protected function update(): Show
     {
+        print("nay");
         $showUpdate = MyPDO::getInstance()->prepare(
             <<<SQL
                 UPDATE tvshow
                 SET name='{$this->getName()}',
                     originalName='{$this->getOriginalName()}',
                     homepage='{$this->getHomepage()}',
-                    overview='{$this->getOverview()}',
-                    posterId='{$this->getPosterId()}'
+                    overview='{$this->getOverview()}'
                 WHERE id={$this->getId()}
             SQL
         );
         $showUpdate->execute();
+        print("yay");
         return $this;
     }
 
@@ -147,8 +150,11 @@ class Show
     {
         $showInsert = MyPDO::getInstance()->prepare(
             <<<SQL
-                INSERT INTO Show(name, originalName, homepage, overview)
-                VALUES ('{$this->getName()}','{$this->getOriginalName()}','{$this->getHomepage()}','{$this->getOverview()}')
+                INSERT INTO tvshow(name, originalName, homepage, overview)
+                VALUES ('{$this->getName()}',
+                        '{$this->getOriginalName()}',
+                        '{$this->getHomepage()}',
+                        '{$this->getOverview()}')
             SQL
         );
         $showInsert->execute();

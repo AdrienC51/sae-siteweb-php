@@ -32,19 +32,19 @@ class ShowForm extends Show
                         <input name="id" type="hidden" value="{$this?->show?->getId()}">
                         <label>
                             Nom français
-                            <input name="name" type="text" value="{$this->escapeString($this?->show?->getName())}" required>
+                            <input name="name" type="text" value="{$this->stripTagsAndTrim($this->escapeString($this?->show?->getName()))}" required>
                         </label>
                         <label>
                             Nom original
-                            <input name="originalName" type="text" value="{$this->escapeString($this?->show?->getOriginalName())}" required>
+                            <input name="originalName" type="text" value="{$this->stripTagsAndTrim($this->escapeString($this?->show?->getOriginalName()))}" required>
                         </label>
                         <label>
                             Page d'accueil
-                            <input name="homepage" type="text" value="{$this->escapeString($this?->show?->getHomepage())}" required>
+                            <input name="homepage" type="text" value="{$this->stripTagsAndTrim($this->escapeString($this?->show?->getHomepage()))}" required>
                         </label>
                         <label>
                             Description
-                            <input name="overview" type="text" value="{$this->escapeString($this?->show?->getOverview())}" required>
+                            <input name="overview" type="text" value="{$this->stripTagsAndTrim($this->escapeString($this?->show?->getOverview()))}" required>
                         </label>
                         
                         <button type="submit">Enregistrer</button>
@@ -59,7 +59,10 @@ class ShowForm extends Show
      */
     public function setEntityFromQueryString(): void
     {
-        if (!isset($_POST['name']) || $_POST['name'] == "") {
+        if ((!isset($_POST['name']) || $_POST['name'] == "") ||
+            (!isset($_POST['originalName']) || $_POST['originalName'] == "") ||
+            (!isset($_POST['homepage']) || $_POST['homepage'] == "") ||
+            (!isset($_POST['overview']) || $_POST['overview'] == "")) {
             throw new ParameterException();
         } elseif(isset($_POST['id']) && ctype_digit($_POST['id'])) {
             $this->show = $this->create(
