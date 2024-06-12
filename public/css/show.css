@@ -1,5 +1,8 @@
 html,body {
     height: 95vh;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
 }
 .header{
     display: flex;
@@ -8,6 +11,11 @@ html,body {
     border-color: black;
     background-color: yellow;
     align-items: center;
+    padding:10px;
+    box-shadow: 0 4px 2px -2px gray;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .footer{
     display: flex;
@@ -15,8 +23,14 @@ html,body {
     align-items: end;
     border-color: black;
     background-color: yellow;
+    padding:10px;
+    box-shadow: 0 4px 2px -2px gray;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 
 }
+
 .content {
     display:flex;
     flex-direction: column;
@@ -24,7 +38,15 @@ html,body {
     height : 90% ;
     overflow: auto;
     margin: 5px ;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+
+/* Contenu principal (liste des saisons) */
+
 a {
     display : flex;
     flex-direction: row;
@@ -32,6 +54,15 @@ a {
     background-color: lightblue;
     gap : 1px;
     flex: 1;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+a:hover {
+    background-color: #add8e6;
+    color: black;
 }
 .main {
     display:flex ;
@@ -40,14 +71,22 @@ a {
     flex : 1 ;
 
 }
+
+/* Informations série */
+
 .head_content {
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .head_content_text {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 .head_content p:first-child{
     text-align: right;
@@ -58,26 +97,107 @@ a {
     gap: 5px;
 }
 
+
+
 a > p {
     display: flex;
     align-items: center;
     margin-left: 5px;
+}
+
+/* Menu */
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+
 }
 nav a {
     float: left;
     text-decoration: none;
     color: #000000;
     height:20px;
-    line-height: 18px;
     font-family: sans-serif;
     transition: .5s;
     margin: 3px;
 }
 nav a:hover{
-    background: #f43c80
+    background: #f43c80;
+    color:white;
 }
 .menu_space {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+img {
+    border-radius: 8px;
+}
+@media (max-width: 600px) {
+    .main {
+        gap:10px;
+    }
+    a {
+        flex-direction: column;
+        align-items: center;
+    }
+    a img {
+        width: 100px;
+        height: 150px;
+    }
+    a p {
+        text-align: center;
+    }
+    nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .head_content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-height: 801px) and (max-width: 600px) {
+    .main {
+        gap: 15px;
+    }
+    a {
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    a img {
+        width: 120px;
+        height: 180px;
+    }
+    a p {
+        text-align: left;
+    }
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .head_content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (min-height: 1000px) and (min-width: 800px) {
+    .main {
+        gap: 20px;
+    }
+    a {
+        flex-direction: row;
+        align-items: center;
+    }
+    a img {
+        width: 150px;
+        height: 200px;
+    }
+    a p {
+        text-align: left;
+    }
 }

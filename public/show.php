@@ -20,7 +20,7 @@ if (!$show->getId()) {
 }
 
 $webPage = new AppWebPage("Séries TV : {$show->getName()}");
-$webPage->appendCssUrl('css/fichier.css');
+$webPage->appendCssUrl('css/show.css');
 
 
 $webPage->appendContent(
@@ -33,7 +33,7 @@ $webPage->appendContent(
             </nav>
         </div>
         <div class='head_content'>
-             <img src='poster.php?posterId={$show->getPosterId()}'  alt='poster'/>
+             <img src='poster.php?posterId={$show->getPosterId()}'  width="150" height="200"/>
              <div class="head_content_text">
                 <p>{$show->getName()}<br />{$show->getOriginalName()}</p>
                 <p>{$show->getOverview()}</p>
@@ -48,7 +48,7 @@ foreach ($listSeasons as $season) {
     $webPage->appendContent(
         <<<HTML
         <a href='/season.php?seasonId={$season->getId()}'>
-            <img src='poster.php?posterId={$season->getPosterId()}'  alt='poster'/>
+            <img src='poster.php?posterId={$season->getPosterId()}'  width="150" height="200"/>
             <p>{$season->getName()}</p>          
         </a>
         HTML

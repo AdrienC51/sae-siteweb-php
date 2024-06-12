@@ -37,7 +37,7 @@ $webPage->appendContent(
             </nav>
         </div>
         <div class='head_content'>
-             <img src='poster.php?posterId={$season->getPosterId()}'  alt='poster'/>
+             <img src='poster.php?posterId={$season->getPosterId()}' width="150" height="200" />
              <div class="head_content_text">
                 <a href="/show.php?showId={$show->getId()}">{$show->getName()}</a>
                 <p>{$season->getName()}</p>
