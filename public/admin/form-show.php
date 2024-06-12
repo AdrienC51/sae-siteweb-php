@@ -12,8 +12,8 @@ $show = null;
 try {
     if (isset($_GET['showId'])) {
         if (ctype_digit($_GET['showId'])) {
-            $show = new Show();
-            $show->findById((int)$_GET['showId']);
+            $showSearch = new Show();
+            $show = $showSearch->findById((int)$_GET['showId']);
         } else {
             throw new ParameterException();
         }
