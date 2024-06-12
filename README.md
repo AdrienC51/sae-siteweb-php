@@ -1,4 +1,4 @@
-# sae2-01
+# SAÉ 2.01 - Développement d’une application
 
 ## Membres du binôme
 * Adrien CADALEN (cada0003)
