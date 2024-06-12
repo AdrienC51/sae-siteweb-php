@@ -8,6 +8,10 @@ use Entity\Exception\ParameterException;
 
 try {
     if (!isset($_GET["posterId"]) || !is_numeric($_GET["posterId"])) {
+        $defaultUrl = 'http://cutrona/but/s2/sae2-01/ressources/public/img/default.png';
+        $defaultPoster = file_get_contents("$defaultUrl");
+        header("Content-Type: image/png");
+        echo $defaultPoster;
         throw new ParameterException();
     }
     $serie = (new Poster())->findById((int)($_GET["posterId"])) ;
