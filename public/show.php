@@ -20,7 +20,7 @@ if (!$show->getId()) {
 }
 
 $webPage = new AppWebPage("Séries TV : {$show->getName()}");
-$webPage->appendCssUrl('css/fichier.css');
+$webPage->appendCssUrl('css/show.css');
 
 
 $webPage->appendContent(
