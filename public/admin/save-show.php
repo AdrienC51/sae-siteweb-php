@@ -11,7 +11,6 @@ try {
     $show = $showForm->getShow();
     $show->save();
     header("Location: /");
-
 } catch (ParameterException) {
     http_response_code(400);
 } catch (Exception) {
