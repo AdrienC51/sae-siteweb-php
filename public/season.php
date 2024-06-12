@@ -31,6 +31,11 @@ $webPage->appendCssUrl('css/season.css');
 
 $webPage->appendContent(
     <<<HTML
+        <div class="menu_space">
+            <nav>
+                <a href="index.php">Home</a>
+            </nav>
+        </div>
         <div class='head_content'>
              <img src='poster.php?posterId={$season->getPosterId()}'  alt='poster'/>
              <div class="head_content_text">
