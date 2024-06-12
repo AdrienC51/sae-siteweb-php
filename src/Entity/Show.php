@@ -40,7 +40,7 @@ class Show
         $this->posterId = $posterId;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
