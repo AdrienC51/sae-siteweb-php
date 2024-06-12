@@ -32,7 +32,7 @@ foreach ($allShows as $show) {
     $page->appendContent(
         <<<HTML
         <a href='/show.php?showId={$show->getId()}'>
-            <img src='poster.php?posterId={$show->getPosterId()}'  alt='poster'/>
+            <img src='poster.php?posterId={$show->getPosterId()}'  width="150" height="200"/>
             <p>{$show->getName()} <br /><br />{$show->getOverview()} </p>          
         </a>
         HTML
