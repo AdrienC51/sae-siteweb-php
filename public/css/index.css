@@ -73,3 +73,21 @@ a:nth-child(2n){
     justify-content: space-between;
 
 }
+nav a {
+    float: left;
+    text-decoration: none;
+    color: #000000;
+    height:20px;
+    line-height: 18px;
+    font-family: sans-serif;
+    transition: .5s;
+    margin: 3px;
+}
+nav a:hover{
+    background: #f43c80
+}
+.menu_space {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
