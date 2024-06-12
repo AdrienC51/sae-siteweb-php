@@ -20,11 +20,18 @@ if (!$show->getId()) {
 }
 
 $webPage = new AppWebPage("Séries TV : {$show->getName()}");
-$webPage->appendCssUrl('css/show.css');
+$webPage->appendCssUrl('css/fichier.css');
 
 
 $webPage->appendContent(
     <<<HTML
+        <div class="menu_space">
+           <nav>
+                <a href="index.php">Home</a>
+                <a href="admin/form-show.php?showId={$show->getId()}">Edit TVShow</a>
+                <a href="admin/delete-show.php?showId={$show->getId()}">Delete TVShow</a>
+            </nav>
+        </div>
         <div class='head_content'>
              <img src='poster.php?posterId={$show->getPosterId()}'  alt='poster'/>
              <div class="head_content_text">

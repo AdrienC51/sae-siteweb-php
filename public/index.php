@@ -16,8 +16,17 @@ if (isset($_GET['genreId']) && ctype_digit($_GET['genreId'])) {
 } else {
     $allShows = $shows->findAll();
 }
-
+$page->appendContent(
+    <<<HTML
+    <div class="menu_space">
+        <nav>
+            <a href="admin/form-show.php">Create Show</a>
+        </nav>
+    </div>
+    HTML
+);
 $page->appendContent("<div class='main'>");
+
 foreach ($allShows as $show) {
     $posters = new Poster();
     $page->appendContent(
