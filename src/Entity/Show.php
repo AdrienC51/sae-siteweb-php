@@ -7,15 +7,17 @@ namespace Entity;
 use Database\MyPdo;
 use Entity\Collection\SeasonCollection;
 use PDO;
+use Html\StringEscaper;
 
 class Show
 {
+    use StringEscaper;
     private ?int $id;
     private string $name;
     private string $originalName;
     private string $homepage;
     private string $overview;
-    private ?int $posterId=null;
+    private ?int $posterId = null;
 
     public function getHomepage(): string
     {
@@ -102,7 +104,7 @@ class Show
         return $listSeasons->findByTvShowId($this->getId());
     }
 
-    public function create(string $name,string $originalName,string $homepage, string $overview, ?int $id = null): Show
+    public function create(string $name, string $originalName, string $homepage, string $overview, ?int $id = null): Show
     {
         $show = new Show();
         $show->setId($id);
@@ -128,18 +130,19 @@ class Show
 
     protected function update(): Show
     {
+        print("nay");
         $showUpdate = MyPDO::getInstance()->prepare(
             <<<SQL
                 UPDATE tvshow
-                SET name='{$this->stripTagsAndTrim($this->escapeString($this->getName()))}',
-                    originalName='{$this->stripTagsAndTrim($this->escapeString($this->getOriginalName()))}',
-                    homepage='{$this->stripTagsAndTrim($this->escapeString($this->getHomepage()))}',
-                    overview='{$this->stripTagsAndTrim($this->escapeString($this->getOverview()))}',
-                    posterId='{$this->getPosterId()}'
+                SET name='{$this->getName()}',
+                    originalName='{$this->getOriginalName()}',
+                    homepage='{$this->getHomepage()}',
+                    overview='{$this->getOverview()}'
                 WHERE id={$this->getId()}
             SQL
         );
         $showUpdate->execute();
+        print("yay");
         return $this;
     }
 
@@ -148,10 +151,10 @@ class Show
         $showInsert = MyPDO::getInstance()->prepare(
             <<<SQL
                 INSERT INTO tvshow(name, originalName, homepage, overview)
-                VALUES ('{$this->stripTagsAndTrim($this->escapeString($this->getName()))}',
-                        '{$this->stripTagsAndTrim($this->escapeString($this->getOriginalName()))}',
-                        '{$this->stripTagsAndTrim($this->escapeString($this->getHomepage()))}',
-                        '{$this->stripTagsAndTrim($this->escapeString($this->getOverview()))}')
+                VALUES ('{$this->getName()}',
+                        '{$this->getOriginalName()}',
+                        '{$this->getHomepage()}',
+                        '{$this->getOverview()}')
             SQL
         );
         $showInsert->execute();
