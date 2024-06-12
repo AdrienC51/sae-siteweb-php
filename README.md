@@ -46,8 +46,8 @@
 * Contient un menu avec un bouton permettant de revenir à la page d'accueil
 ### Page du formulaire de création/modification d'une série (form-show.php)
 * Contient un formulaire permettant de créer/modifier les informations d'une série
-  * Si vous accéder à la page depuis le bouton `Edit TVShow`, les informations de la série que vous voulez modifier seront présentes dans les cases du formulaire et l'id de la série sera retenu
-  * Si vous accéder à la page depuis le bouton `Create Show`, les cases seront vides pour taper les informations de la nouvelle série
+  * Si vous accédez à la page depuis le bouton `Edit TVShow`, les informations de la série que vous voulez modifier seront présentes dans les cases du formulaire et l'id de la série sera retenu
+  * Si vous accédez à la page depuis le bouton `Create Show`, les cases seront vides pour taper les informations de la nouvelle série
 * Une fois les informations rentrées et le bouton `Enregistrer` pressé, les informations sont envoyées par la méthode `POST` 
 ### Page de création/modification d'une série (save-show.php)
 * La page récupère les informations dans la charge utile
