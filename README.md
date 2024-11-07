@@ -15,7 +15,7 @@
 * Un navigateur Internet (ex: Google Chrome ou Mozilla Firefox)
 
 ## Mise en place
-* Clonez notre git avec la commande `git clone https://iut-info.univ-reims.fr/gitlab/cada0003/sae2-01.git`
+* Clonez notre git avec la commande `git clone https://github.com/AdrienC51/sae-siteweb-php`
 * Placez-vous dans le dossier/répertoire
 * Lancer le serveur avec la commande
   * sur Windows : `composer start:windows`
